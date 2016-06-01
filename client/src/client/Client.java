@@ -22,18 +22,15 @@ public class Client {
             String fromServer, fromUser;
 
             System.out.println("Successfully connected to " + hostName);
-            System.out.println("Start conversation:\n");
+            System.out.println("You start conversation:\n");
+            System.out.println("Client:");
 
-            while ((fromServer = in.readLine()) != null) {
-                System.out.println("Server:\n" + fromServer);
-                if (fromServer.equals("Bye"))
-                    break;
-
-                System.out.println("Client: ");
-                fromUser = stdIn.readLine();
-                if (fromUser != null) {
-                    out.println(fromUser);
-                }
+            while (!(fromUser = stdIn.readLine()).equals("Bye")) {
+                out.println(fromUser);
+                System.out.println("Server: ");
+                fromServer = in.readLine();
+                System.out.println(fromServer);
+                System.out.println("Client:");
             }
         }
         catch (Exception e) {

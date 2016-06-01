@@ -20,16 +20,23 @@ public class Server {
                 BufferedReader stdIn = new BufferedReader(new InputStreamReader(System.in))
         ) {
 
-            System.out.println("Client successfully connected!\nStart conversation:\n");
-            String fromServer, fromUser;
-            System.out.println("Server: ");
+            System.out.println("Client successfully connected\nWaiting client message:\n");
+            String fromServer="", fromUser="";
+            System.out.println("Client:");
 
-            while ( !(fromServer = stdIn.readLine()).equals("Bye") ) {
-                out.println(fromServer);
+            while ( (fromUser = in.readLine())!= null && !fromServer.equals("Bye") ) {
 
-                if( (fromUser = in.readLine()) != null )
+                System.out.println(fromUser);
+                System.out.println("Server:");
+
+                if( (fromServer = stdIn.readLine()).equals("Bye") ) {
+                    break;
+                }
+                else {
+                    out.println(fromServer);
+                }
+
                 System.out.println("Client:\n" + fromUser);
-                System.out.println("Server: ");
             }
 
         } catch (Exception e) {

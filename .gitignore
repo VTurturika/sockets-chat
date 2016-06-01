@@ -1,1 +1,7 @@
-out/
+out/production
+*.iml
+client/*.iml
+client/src/META-INF
+server/*.iml
+server/src/META-INF
+.idea
